@@ -17,7 +17,7 @@ public class TestLionSex {
     }
 
     @Mock
-    Feline feline;
+    private Feline feline;
 
     private final String sex;
     private final boolean expected;
@@ -27,7 +27,7 @@ public class TestLionSex {
         this.expected = expected;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters( name = "{index}: sex={0}, hasMane={1}")
     public static Object[][] getHasMane() {
         return new Object[][] {
                 {"Самец", true},

@@ -12,7 +12,7 @@ import java.util.List;
 public class TestCat {
 
     @Mock
-    Feline feline;
+    private Feline feline;
 
     @Test
     public void checkCatEatMeat() throws Exception{
@@ -23,8 +23,8 @@ public class TestCat {
         Mockito.verify(feline, Mockito.times(1)).eatMeat();
 
         Mockito.when(feline.eatMeat()).thenReturn(food);
-        Assert.assertEquals(feline.eatMeat(), food);
-        Assert.assertEquals(cat.getFood(), food);
+        Assert.assertEquals(food, feline.eatMeat());
+        Assert.assertEquals(food, cat.getFood());
     }
 
     @Test
@@ -34,21 +34,21 @@ public class TestCat {
         List<String>  noFood = List.of("Неизвестный вид животного, используйте значение Травоядное или Хищник");
 
         Mockito.when(feline.eatMeat()).thenReturn(noFood);
-        Assert.assertNotEquals(feline.eatMeat(), food);
-        Assert.assertNotEquals(cat.getFood(), food);
+        Assert.assertNotEquals(food, feline.eatMeat());
+        Assert.assertNotEquals(food, cat.getFood());
     }
 
     @Test
     public void checkSound() {
         Cat cat = new Cat(feline);
 
-        Assert.assertEquals(cat.getSound(), "Мяу");
+        Assert.assertEquals("Мяу", cat.getSound());
     }
 
     @Test
     public void checkSoundNegative() {
         Cat cat = new Cat(feline);
 
-        Assert.assertNotEquals(cat.getSound(), "Гав");
+        Assert.assertNotEquals("Гав", cat.getSound());
     }
 }

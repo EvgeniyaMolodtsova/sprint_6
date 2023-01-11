@@ -11,7 +11,7 @@ public class TestFeline {
         Feline feline = new Feline();
         List<String> food = List.of("Животные", "Птицы", "Рыба");
 
-        Assert.assertEquals(feline.eatMeat(), food);
+        Assert.assertEquals(food, feline.eatMeat());
     }
 
     @Test
@@ -19,35 +19,35 @@ public class TestFeline {
         Feline feline = new Feline();
         List<String> food = List.of();
 
-        Assert.assertNotEquals(feline.eatMeat(), food);
+        Assert.assertNotEquals(food, feline.eatMeat());
     }
 
     @Test
     public void checkGetFamily() {
         Feline feline = new Feline();
 
-        Assert.assertEquals(feline.getFamily(), "Кошачьи");
+        Assert.assertEquals("Кошачьи", feline.getFamily());
     }
 
     @Test
     public void checkGetFamilyNegative() {
         Feline feline = new Feline();
 
-        Assert.assertNotEquals(feline.getFamily(), "");
+        Assert.assertNotEquals("", feline.getFamily());
     }
 
     @Test
     public void checkGetKittens() {
         Feline feline = new Feline();
 
-        Assert.assertEquals(feline.getKittens(), 1);
+        Assert.assertEquals(1, feline.getKittens());
     }
 
     @Test
     public void checkGetKittensNegative() {
         Feline feline = new Feline();
 
-        Assert.assertNotEquals(feline.getKittens(), 3);
+        Assert.assertNotEquals(3, feline.getKittens());
     }
 
     @Test
@@ -56,6 +56,6 @@ public class TestFeline {
         Random rand = new Random();
         int count = rand.nextInt(100);
 
-        Assert.assertEquals(feline.getKittens(count), count);
+        Assert.assertEquals(count, feline.getKittens(count));
     }
 }

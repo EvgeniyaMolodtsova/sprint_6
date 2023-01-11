@@ -12,7 +12,7 @@ import java.util.List;
 public class TestLion {
 
     @Mock
-    Feline feline;
+    private Feline feline;
 
     @Test
     public void checkGetKittens() throws Exception {
@@ -22,8 +22,8 @@ public class TestLion {
         Mockito.verify(feline, Mockito.times(1)).getKittens();
 
         Mockito.when(feline.getKittens()).thenReturn(1);
-        Assert.assertEquals(feline.getKittens(), 1);
-        Assert.assertEquals(lion.getKittens(), 1);
+        Assert.assertEquals(1, feline.getKittens());
+        Assert.assertEquals(1, lion.getKittens());
     }
 
     @Test
@@ -31,8 +31,8 @@ public class TestLion {
         Lion lion = new Lion("Самка", feline);
 
         Mockito.when(feline.getKittens()).thenReturn(189);
-        Assert.assertNotEquals(feline.getKittens(), 1);
-        Assert.assertNotEquals(lion.getKittens(), 1);
+        Assert.assertNotEquals(1, feline.getKittens());
+        Assert.assertNotEquals(1, lion.getKittens());
     }
 
     @Test
@@ -44,8 +44,8 @@ public class TestLion {
         Mockito.verify(feline, Mockito.times(1)).eatMeat();
 
         Mockito.when(feline.eatMeat()).thenReturn(food);
-        Assert.assertEquals(feline.eatMeat(), food);
-        Assert.assertEquals(lion.getFood(), food);
+        Assert.assertEquals(food, feline.eatMeat());
+        Assert.assertEquals(food, lion.getFood());
     }
 
     @Test
@@ -55,8 +55,8 @@ public class TestLion {
         List<String>  noFood = List.of("Неизвестный вид животного, используйте значение Травоядное или Хищник");
 
         Mockito.when(feline.eatMeat()).thenReturn(noFood);
-        Assert.assertNotEquals(feline.eatMeat(), food);
-        Assert.assertNotEquals(lion.getFood(), food);
+        Assert.assertNotEquals(food, feline.eatMeat());
+        Assert.assertNotEquals(food, lion.getFood());
     }
 }
 
